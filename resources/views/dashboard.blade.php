@@ -88,7 +88,7 @@
 </div> --}}
 @endsection
 @push('plugin-scripts')
-    <script>
+    {{-- <script>
         gender = document.getElementById('gender').getContext('2d'),
             pegawai = document.getElementById('pegawai').getContext('2d'),
             usia = document.getElementById('usia').getContext('2d'),
@@ -385,6 +385,6 @@
             lineWidth: '2',
             lineColor: '#ffa534',
             fillColor: 'rgba(255, 165, 52, .14)'
-        });
+        }); --}}
     </script>
 @endpush

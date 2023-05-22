@@ -25,7 +25,7 @@ class CreateMutasiTable extends Migration
             $table->unsignedBigInteger('idDataAset');
             $table->foreign('idDataAset')->references('id')->on('detail_aset');
             $table->unsignedBigInteger('idBeritaAcara');
-            $table->foreign('idBeritaAcara')->references('id')->on('berita_acara');
+            $table->foreign('idBeritaAcara')->references('id')->on('BeritaAcara');
             // dereng selese
         });
     }

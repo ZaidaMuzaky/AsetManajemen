@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             // NipSeeder::class,
             UsersSeeder::class,
             DivisiSeeder::class,
-            JenisBarangSeeder::class,
         ]);
     }
 }

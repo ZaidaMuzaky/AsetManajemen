@@ -13,7 +13,7 @@ class CreateBeritaAcaraTable extends Migration
      */
     public function up()
     {
-        Schema::create('berita_acara', function (Blueprint $table) {
+        Schema::create('BeritaAcara', function (Blueprint $table) {
             $table->id();
             $table->string('kode_berita_Acara');
             $table->string('perihal');
