@@ -16,16 +16,15 @@ class CreateDetailAsetTable extends Migration
         Schema::create('detail_aset', function (Blueprint $table) {
             $table->id();
             $table->string('kode_aset');
-            $table->string('qr');
-            $table->string('serial_number');
+            $table->string('nama');
+            $table->string('qr')->nullable();
+            $table->string('serial_number')->nullable();
             $table->string('kategori_aset');
-            $table->string('tahun_perolehan');
+            $table->year('tahun_perolehan');
             $table->string('asal_perusahaan');
             $table->enum('kondisi', ['Baik', 'RusakRingan', 'RusakBerat'])->default('Baik');
-            $table->string('deskripsi_aset');
-
-            $table->unsignedBigInteger('idLokasi');
-            $table->foreign('idLokasi')->references('id')->on('lokasi');
+            $table->text('deskripsi_aset');
+            $table->string('lokasi', 255);
             $table->unsignedBigInteger('idPenanggungJawab');
             $table->foreign('idPenanggungJawab')->references('id')->on('penanggung_jawab');
             $table->unsignedBigInteger('idDetailBarang');

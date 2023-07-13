@@ -16,6 +16,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DaftarPenggunaController;
 use App\Http\Controllers\DataAsetController;
+use App\Http\Controllers\DetailDataAset;
+use App\Http\Controllers\DetailDataAsetController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\JenisBarangController;
 use App\Models\DaftarPengguna;
@@ -63,3 +65,5 @@ Route::resource('divisi', DivisiController::class);
 Route::resource('JenisBarang', JenisBarangController::class);
 
 Route::resource('admin', UsersController::class)->middleware(['auth', 'role:superadmin']);;
+
+Route::resource('detail-aset', DetailDataAsetController::class);

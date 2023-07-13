@@ -18,6 +18,12 @@ class DatabaseSeeder extends Seeder
             // NipSeeder::class,
             UsersSeeder::class,
             DivisiSeeder::class,
+            PenanggungJawabSeeder::class,
+            StatusSeeder::class,
+            // DataAsetSeeder::class,
+            JenisBarangSeeder::class,
+            DataBarangSeeder::class,
+            // DetailAsetSeeder::class,
         ]);
     }
 }

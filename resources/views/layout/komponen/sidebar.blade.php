@@ -53,8 +53,8 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @yield('statusdataaset')">
-                    <a href="{{ route('dashboard') }}">
+                <li class="nav-item @yield('detail-aset')">
+                    <a href="{{ route('detail-aset.index') }}">
                         <i class="fa-solid fa-computer"></i>
                         <p>Data Aset</p>
                     </a>

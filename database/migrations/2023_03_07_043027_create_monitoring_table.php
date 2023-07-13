@@ -18,7 +18,8 @@ class CreateMonitoringTable extends Migration
             $table->date('tgl_monitoring');
             $table->string('deskripsi');
             $table->enum('kondisi', ['Baik', 'RusakRingan', 'RusakBerat'])->default('Baik');
-            $table->string('pj');
+            $table->unsignedBigInteger('idPenanggungJawab');
+            $table->foreign('idPenanggungJawab')->references('id')->on('penanggung_jawab');
             $table->unsignedBigInteger('idDataAset');
             $table->foreign('idDataAset')->references('id')->on('detail_aset');
             $table->timestamps();
