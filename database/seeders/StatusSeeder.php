@@ -16,9 +16,9 @@ class StatusSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['value' => 'Baik', 'nama' => 'Baik'],
-            ['value' => 'RusakRingan', 'nama' => 'Rusak Ringan'],
-            ['value' => 'RusakBerat', 'nama' => 'Rusak Berat'],
+            ['value' => 'Baik', 'nama' => 'Baik', 'color' => 'success'],
+            ['value' => 'RusakRingan', 'nama' => 'Rusak Ringan', 'color' => 'warning'],
+            ['value' => 'RusakBerat', 'nama' => 'Rusak Berat', 'color' => 'danger'],
         ];
         DB::table('status')->insert($data);
     }

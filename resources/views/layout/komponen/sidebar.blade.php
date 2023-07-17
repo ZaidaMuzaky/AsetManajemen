@@ -35,18 +35,18 @@
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="@yield('statusmutasi')">
-                                <a href="{{ route('divisi.index') }}">
+                            <li class="@yield('data-mutasi')">
+                                <a href="{{ route('data-mutasi.index') }}">
                                     <span class="sub-item">Data Mutasi</span>
                                 </a>
                             </li>
-                            <li class="@yield('statusmutasi')">
-                                <a href="{{ route('divisi.index') }}">
+                            <li class="@yield('memo')">
+                                <a href="{{ route('memo.index') }}">
                                     <span class="sub-item">Memo</span>
                                 </a>
                             </li>
-                            <li class="@yield('statusmutasi')">
-                                <a href="{{ route('divisi.index') }}">
+                            <li class="@yield('berita-acara')">
+                                <a href="{{ route('berita-acara.index') }}">
                                     <span class="sub-item">Berita Acara</span>
                                 </a>
                             </li>
@@ -59,14 +59,14 @@
                         <p>Data Aset</p>
                     </a>
                 </li>
-                <li class="nav-item @yield('statusMonitoring')">
-                    <a href="{{ route('dashboard') }}">
+                <li class="nav-item @yield('monitoring')">
+                    <a href="{{ route('monitoring.index') }}">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <p>Monitoring</p>
                     </a>
                 </li>
-                <li class="nav-item @yield('statusCetaklabel')">
-                    <a href="{{ route('dashboard') }}">
+                <li class="nav-item @yield('cetak-label')">
+                    <a href="{{ route('cetak-label.index') }}">
                         <i class="fa-solid fa-print"></i>
                         <p>Cetak Label</p>
                     </a>

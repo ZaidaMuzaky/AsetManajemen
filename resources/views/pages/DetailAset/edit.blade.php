@@ -115,7 +115,7 @@
                                     <div class="form-group">
                                         <label for="tahun_perolehan">Tahun Perolehan</label>
                                         <input type="input" name="tahun_perolehan"
-                                            value="{{ old('tahun_perolehan') ?? $detailAset->tahun }}"
+                                            value="{{ old('tahun_perolehan') ?? $detailAset->tahun_perolehan }}"
                                             class="form-control  input-full @error('tahun_perolehan') is-invalid @enderror"
                                             placeholder="YYYY" maxlength="4" id="tahun_perolehan" min="2000"
                                             max="2030" required>

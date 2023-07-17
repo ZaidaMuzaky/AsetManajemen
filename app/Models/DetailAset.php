@@ -31,4 +31,14 @@ class DetailAset extends Model
     {
         return $this->belongsTo(PenanggungJawab::class, 'idPenanggungJawab', 'id');
     }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'kondisi', 'value');
+    }
+
+    public function monitoring()
+    {
+        return $this->hasMany(Monitoring::class, 'idDataAset', 'id');
+    }
 }

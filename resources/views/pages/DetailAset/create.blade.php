@@ -66,7 +66,9 @@
                                         <select name="idPenanggungJawab" class="form-control form-control" required>
                                             <option>---Pilih---</option>
                                             @foreach ($pj as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                <option value="{{ $item->id }}"
+                                                    {{ old('idPenanggungJawab') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('idPenanggungJawab')
@@ -80,7 +82,9 @@
                                         <select name="idDetailBarang" class="form-control form-control" required>
                                             <option>---Pilih---</option>
                                             @foreach ($dataBarang as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
+                                                <option value="{{ $item->id }}"
+                                                    {{ old('idDetailBarang') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->nama_barang }}</option>
                                             @endforeach
                                         </select>
                                         @error('idDetailBarang')
@@ -119,7 +123,9 @@
                                         <select name="kondisi" id="kondisi" class="form-control" required>
                                             <option value="">Pilih Kondisi</option>
                                             @foreach ($status as $item)
-                                                <option value="{{ $item->value }}">{{ $item->nama }}</option>
+                                                <option value="{{ $item->value }}"
+                                                    {{ old('kondisi') == $item->value ? 'selected' : '' }}>
+                                                    {{ $item->nama }}</option>
                                             @endforeach
                                         </select>
                                         @error('kondisi')

@@ -14,12 +14,17 @@ use App\Http\Controllers\TipePegawaiController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\CetakLabelController;
 use App\Http\Controllers\DaftarPenggunaController;
 use App\Http\Controllers\DataAsetController;
+use App\Http\Controllers\DataMutasiController;
 use App\Http\Controllers\DetailDataAset;
 use App\Http\Controllers\DetailDataAsetController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\MemoController;
+use App\Http\Controllers\MonitoringController;
 use App\Models\DaftarPengguna;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,3 +72,21 @@ Route::resource('JenisBarang', JenisBarangController::class);
 Route::resource('admin', UsersController::class)->middleware(['auth', 'role:superadmin']);;
 
 Route::resource('detail-aset', DetailDataAsetController::class);
+Route::get('detail-aset/history/{id}', [DetailDataAsetController::class, 'history'])->name('detail-aset.history');
+
+// Monitoring
+Route::get('monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+Route::get('monitoring/detail/{id}', [MonitoringController::class, 'show'])->name('monitoring.show');
+Route::get('monitoring/create/{id}', [MonitoringController::class, 'create'])->name('monitoring.create');
+Route::post('monitoring/store/{id}', [MonitoringController::class, 'store'])->name('monitoring.store');
+Route::get('monitoring/edit/{id}', [MonitoringController::class, 'edit'])->name('monitoring.edit');
+Route::put('monitoring/update/{id}', [MonitoringController::class, 'update'])->name('monitoring.update');
+Route::delete('monitoring/{id}', [MonitoringController::class, 'destroy'])->name('monitoring.destroy');
+Route::delete('monitoring/all/{id}', [MonitoringController::class, 'destroyAll'])->name('monitoring.destroy-all');
+
+// Cetak Label
+Route::resource('cetak-label', CetakLabelController::class);
+// Data Mutasi
+Route::resource('data-mutasi', DataMutasiController::class);
+Route::resource('memo', MemoController::class);
+Route::resource('berita-acara', BeritaAcaraController::class);

@@ -5,17 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Monitoring extends Model
+class History extends Model
 {
     use HasFactory;
-    protected $table = 'monitoring';
+    protected $table = 'history';
     protected $fillable = [
-        'tgl_monitoring',
-        'deskripsi',
+        'kode_aset',
+        'nama',
+        'kategori_aset',
+        'tahun_perolehan',
+        'asal_perusahaan',
         'kondisi',
+        'deskripsi_aset',
+        'lokasi',
         'idPenanggungJawab',
-        'idDataAset',
+        'idDetailBarang',
+        'idDataAset'
     ];
+
+    public function dataBarang()
+    {
+        return $this->belongsTo(DataBarang::class, 'idDetailBarang', 'id');
+    }
 
     public function PenanggungJawab()
     {
@@ -27,7 +38,7 @@ class Monitoring extends Model
         return $this->belongsTo(Status::class, 'kondisi', 'value');
     }
 
-    public function detailAset()
+    public function dataAset()
     {
         return $this->belongsTo(DetailAset::class, 'idDataAset', 'id');
     }

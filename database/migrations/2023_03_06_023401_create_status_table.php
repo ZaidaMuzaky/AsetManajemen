@@ -17,6 +17,7 @@ class CreateStatusTable extends Migration
             $table->id();
             $table->string('value');
             $table->string('nama');
+            $table->string('color');
             $table->timestamps();
         });
     }

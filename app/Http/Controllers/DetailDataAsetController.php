@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\DataBarang;
 use App\Models\DetailAset;
+use App\Models\History;
+use App\Models\Monitoring;
 use App\Models\PenanggungJawab;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DetailDataAsetController extends Controller
 {
@@ -17,7 +20,7 @@ class DetailDataAsetController extends Controller
 
     public function index()
     {
-        $detailAset = DetailAset::all();
+        $detailAset = DetailAset::all()->sortByDesc('id');
         return view('pages.DetailAset.index', compact('detailAset'));
     }
 
@@ -43,8 +46,15 @@ class DetailDataAsetController extends Controller
             'idPenanggungJawab' => 'required',
             'idDetailBarang' => 'required',
         ]);
-        $save = DetailAset::create($request->all());
-        if ($save) {
+        $allData = $request->all();
+        $save = DB::transaction(
+            function () use ($allData) {
+                $save = DetailAset::create($allData);
+                $allData['idDataAset'] = $save->id;
+                History::create($allData);
+            }
+        );
+        if (is_null($save)) {
             alert('Data Berhasil Tersimpan!')->background('#B5EDCC');
         } else {
             alert('Simpan Data Gagal!')->background('#F4CACA');
@@ -61,8 +71,50 @@ class DetailDataAsetController extends Controller
         return view('pages.DetailAset.edit', compact('status', 'pj', 'dataBarang', 'detailAset'));
     }
 
+    public function update(int $id, Request $request)
+    {
+        $request->validate([
+            'kode_aset' => 'required|unique:detail_aset,detail_aset.kode_aset,' . $id,
+            'nama' => 'required',
+            'kategori_aset' => 'required',
+            'tahun_perolehan' => 'required',
+            'asal_perusahaan' => 'required',
+            'kondisi' => 'required',
+            'deskripsi_aset' => 'required',
+            'lokasi' => 'required',
+            'idPenanggungJawab' => 'required',
+            'idDetailBarang' => 'required',
+        ]);
+
+        $data = DetailAset::find($id);
+        $history = array_merge($request->all(), ['idDataAset' => $id]);
+        DB::transaction(
+            function () use ($data, $request, $history) {
+                $data->update($request->all());
+                History::create($history);
+            }
+        );
+        if ($data) {
+            alert('Data Berhasil Terupdate!')->background('#B5EDCC');
+        } else {
+            alert('Update Data Gagal!')->background('#F4CACA');
+        }
+        return redirect()->route('detail-aset.index');
+    }
+
     public function destroy($id)
     {
-        DetailAset::find($id)->delete();
+        DB::transaction(
+            function () use ($id) {
+                History::where('idDataAset', $id)->delete();
+                DetailAset::find($id)->delete();
+            }
+        );
+    }
+
+    public function history($id)
+    {
+        $history = History::select('*')->where('idDataAset', $id)->orderByDesc('id')->get();
+        return view('pages.DetailAset.history', compact('history'));
     }
 }
