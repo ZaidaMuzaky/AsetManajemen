@@ -35,17 +35,17 @@
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="@yield('data-mutasi')">
+                            <li class="@yield('statusmutasi')">
                                 <a href="{{ route('data-mutasi.index') }}">
                                     <span class="sub-item">Data Mutasi</span>
                                 </a>
                             </li>
-                            <li class="@yield('memo')">
+                            <li class="@yield('statusmutasi')">
                                 <a href="{{ route('memo.index') }}">
                                     <span class="sub-item">Memo</span>
                                 </a>
                             </li>
-                            <li class="@yield('berita-acara')">
+                            <li class="@yield('statusmutasi')">
                                 <a href="{{ route('berita-acara.index') }}">
                                     <span class="sub-item">Berita Acara</span>
                                 </a>

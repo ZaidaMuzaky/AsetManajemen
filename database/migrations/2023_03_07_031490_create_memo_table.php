@@ -21,8 +21,8 @@ class CreateMemoTable extends Migration
             $table->string('deskripsi');
             $table->unsignedBigInteger('pengirim');
             $table->foreign('pengirim')->references('id_user')->on('users');
-            $table->unsignedBigInteger('Penerima');
-            $table->foreign('Penerima')->references('id_user')->on('users');
+            $table->unsignedBigInteger('penerima');
+            $table->foreign('penerima')->references('id')->on('penanggung_jawab');
             $table->timestamps();
         });
     }

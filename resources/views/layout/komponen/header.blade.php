@@ -2,7 +2,7 @@
       <div class="logo-header" data-background-color="blue">
 
           <a href="{{ route('dashboard') }}" class="logo">
-              <img src="{{ asset('img/Logo3.png') }}" alt="navbar brand" class="navbar-brand" width="208">
+              <img src="{{ asset('img/Logo3.png') }}" alt="navbar brand" class="navbar-brand" width="160">
           </a>
           <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
               data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

@@ -67,6 +67,8 @@ Route::resource('DaftarPengguna', DaftarPenggunaController::class);
 
 Route::resource('divisi', DivisiController::class);
 
+Route::resource('memo', MemoController::class);
+
 Route::resource('JenisBarang', JenisBarangController::class);
 
 Route::resource('admin', UsersController::class)->middleware(['auth', 'role:superadmin']);;
