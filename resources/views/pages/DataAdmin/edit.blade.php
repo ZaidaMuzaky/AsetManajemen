@@ -80,7 +80,7 @@
                                         <div class="card-body bg-grey1 text-center">
                                             <div class="form-group mb-0">
                                                 <div class="mb-0">
-                                                    <div class="image-area mt-0">
+                                                    <div class="image-area mt-0" style="width:200px">
                                                         @if ($user->foto == 'null')
                                                             <img id="imageResult" src="{{ asset('img/avatar.png') }}"
                                                                 alt="image profile"
